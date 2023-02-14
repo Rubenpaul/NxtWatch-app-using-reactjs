@@ -11,13 +11,13 @@ export const NavContainer = styled.nav`
 `
 
 export const AppLogo = styled.img`
-  height: 42px;
-  width: 220px;
+  height: 38px;
+  width: 180px;
 `
 
 export const NavItemsContainerMobile = styled.ul`
   padding: 0px;
-  width: 210px;
+  width: 150px;
   display: flex;
   justify-content: space-around;
   align-items: center;

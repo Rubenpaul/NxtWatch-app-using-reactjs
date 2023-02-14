@@ -22,13 +22,13 @@ const NavBar = () => (
 
     <NavItemsContainerMobile>
       <NavItem>
-        <FaMoon size={40} />
+        <FaMoon size={30} />
       </NavItem>
       <NavItem>
-        <GiHamburgerMenu size={40} />
+        <GiHamburgerMenu size={30} />
       </NavItem>
       <NavItem>
-        <FiLogOut size={40} />
+        <FiLogOut size={30} />
       </NavItem>
     </NavItemsContainerMobile>
   </NavContainer>
