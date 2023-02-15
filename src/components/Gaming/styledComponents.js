@@ -49,8 +49,8 @@ export const FailureContainer = styled(LoaderContainer)`
 `
 
 export const FailureImage = styled.img`
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 230px;
   @media screen and (min-width: 576px) {
     height: 300px;
     width: 350px;

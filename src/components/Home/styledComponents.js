@@ -6,6 +6,7 @@ export const Container = styled.div`
 `
 
 export const HomeDetails = styled.div`
+  width: 100%;
   @media screen and (min-width: 768px) {
     width: 80%;
   }
@@ -16,6 +17,7 @@ export const Banner = styled.div`
   background-size: cover;
   padding-left: 30px;
   padding-right: 30px;
+  height: 270px;
 
   @media screen and (min-width: 768px) {
     height: 350px;
@@ -128,11 +130,14 @@ export const HomeVideosList = styled.ul`
 
 export const FailureContainer = styled(LoaderContainer)`
   flex-direction: column;
+  @media screen and (min-width: 768px) {
+    height: 900px;
+  }
 `
 
 export const FailureImage = styled.img`
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 230px;
   @media screen and (min-width: 576px) {
     height: 300px;
     width: 350px;
