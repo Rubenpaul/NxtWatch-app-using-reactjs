@@ -6,10 +6,11 @@ import cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 
 import NavBar from '../NavBar'
+import SideBarContainer from '../SideBarContainer'
 import HomeVideoItem from '../HomeVideoItem'
 
 import {
-  HomeContainer,
+  Container,
   HomeDetails,
   Banner,
   WebsiteLogo,
@@ -23,10 +24,10 @@ import {
   SearchBtn,
   HomeVideosList,
   LoaderContainer,
-  HomeFailureContainer,
-  HomeFailureImage,
-  HomeFailureHeading,
-  HomeFailureParagraph,
+  FailureContainer,
+  FailureImage,
+  FailureHeading,
+  FailureParagraph,
   FailureRetryBtn,
 } from './styledComponents'
 
@@ -134,19 +135,19 @@ class Home extends Component {
   }
 
   renderNoViews = () => (
-    <HomeFailureContainer>
-      <HomeFailureImage
+    <FailureContainer>
+      <FailureImage
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
         alt="no videos"
       />
-      <HomeFailureHeading>No Search results found</HomeFailureHeading>
-      <HomeFailureParagraph>
+      <FailureHeading>No Search results found</FailureHeading>
+      <FailureParagraph>
         Try different key words or remove search filter
-      </HomeFailureParagraph>
+      </FailureParagraph>
       <FailureRetryBtn type="button" onClick={this.onClickRetry}>
         Retry
       </FailureRetryBtn>
-    </HomeFailureContainer>
+    </FailureContainer>
   )
 
   renderHomeSuccessView = () => {
@@ -166,19 +167,19 @@ class Home extends Component {
   )
 
   renderHomeFailureView = () => (
-    <HomeFailureContainer>
-      <HomeFailureImage
+    <FailureContainer>
+      <FailureImage
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
         alt="failure view"
       />
-      <HomeFailureHeading>Oops! Something Went Wrong</HomeFailureHeading>
-      <HomeFailureParagraph>
+      <FailureHeading>Oops! Something Went Wrong</FailureHeading>
+      <FailureParagraph>
         We are having some trouble to complete your request. Please try again
-      </HomeFailureParagraph>
+      </FailureParagraph>
       <FailureRetryBtn type="button" onClick={this.onClickRetry}>
         Retry
       </FailureRetryBtn>
-    </HomeFailureContainer>
+    </FailureContainer>
   )
 
   renderHomeResultView = () => {
@@ -216,7 +217,8 @@ class Home extends Component {
     return (
       <>
         <NavBar />
-        <HomeContainer>
+        <Container>
+          <SideBarContainer />
           <HomeDetails>
             {isCloseClicked ? null : this.renderBannerSection()}
             <HomeSearchAndDetailsContainer>
@@ -234,7 +236,7 @@ class Home extends Component {
               {this.renderHomeResultView()}
             </HomeSearchAndDetailsContainer>
           </HomeDetails>
-        </HomeContainer>
+        </Container>
       </>
     )
   }

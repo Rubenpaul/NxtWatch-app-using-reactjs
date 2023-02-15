@@ -1,6 +1,6 @@
 import {
-  HomeVideoListItem,
-  HomeItemThumbNail,
+  TrendingVideoListItem,
+  TrendingItemThumbNail,
   ThumbnailContainer,
   ItemDetailsContainer,
   ChannelImage,
@@ -14,16 +14,16 @@ import {
   AnchorLink,
 } from './styledComponents'
 
-const HomeVideoItem = props => {
+const TrendingVideoItem = props => {
   const {eachVideo} = props
   const {id, channel, publishedAt, thumbnailUrl, title, viewCount} = eachVideo
   const {name, profileImageUrl} = channel
 
   return (
     <AnchorLink to={`/videos/${id}`}>
-      <HomeVideoListItem>
+      <TrendingVideoListItem>
         <ThumbnailContainer>
-          <HomeItemThumbNail src={thumbnailUrl} alt="video thumbnail" />
+          <TrendingItemThumbNail src={thumbnailUrl} alt="video thumbnail" />
         </ThumbnailContainer>
         <ItemDetailsContainer>
           <ChannelImage src={profileImageUrl} alt="channel logo" />
@@ -38,9 +38,9 @@ const HomeVideoItem = props => {
             </VideoContainer>
           </VideoDetails>
         </ItemDetailsContainer>
-      </HomeVideoListItem>
+      </TrendingVideoListItem>
     </AnchorLink>
   )
 }
 
-export default HomeVideoItem
+export default TrendingVideoItem

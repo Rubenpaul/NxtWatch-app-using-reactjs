@@ -1,18 +1,28 @@
 import styled from 'styled-components'
 
-export const HomeContainer = styled.div`
+export const Container = styled.div`
   font-family: 'Roboto';
+  display: flex;
 `
 
 export const HomeDetails = styled.div`
-  //   border: 1px solid green;
+  @media screen and (min-width: 768px) {
+    width: 80%;
+  }
 `
 
 export const Banner = styled.div`
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   background-size: cover;
-  width: 100%;
-  padding: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  @media screen and (min-width: 768px) {
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `
 
 export const BannerTopContainer = styled.div`
@@ -72,6 +82,9 @@ export const SearchContainer = styled.div`
   height: 45px;
   padding: 0px;
   border-radius: 6px;
+  @media screen and (min-width: 768px) {
+    width: 43%;
+  }
 `
 
 export const SearchInput = styled.input`
@@ -113,39 +126,54 @@ export const HomeVideosList = styled.ul`
   }
 `
 
-export const HomeFailureContainer = styled(LoaderContainer)`
+export const FailureContainer = styled(LoaderContainer)`
   flex-direction: column;
 `
 
-export const HomeFailureImage = styled.img`
-  height: 300px;
-  width: 350px;
+export const FailureImage = styled.img`
+  height: 150px;
+  width: 150px;
+  @media screen and (min-width: 576px) {
+    height: 300px;
+    width: 350px;
+  }
 `
 
-export const HomeFailureHeading = styled.h1`
+export const FailureHeading = styled.h1`
   color: #383838;
-  font-size: 27px;
+  font-size: 24px;
   text-align: center;
   width: 90%;
   margin-bottom: 0px;
   margin-top: 30px;
+  @media screen and (min-width: 576px) {
+    font-size: 27px;
+  }
 `
 
-export const HomeFailureParagraph = styled.p`
+export const FailureParagraph = styled.p`
   color: #909090;
-  font-size: 21px;
+  font-size: 17px;
   text-align: center;
-  width: 90%;
+  width: 80%;
   line-height: 2;
+  @media screen and (min-width: 576px) {
+    font-size: 21px;
+  }
 `
 
 export const FailureRetryBtn = styled.button`
-  height: 48px;
-  width: 120px;
-  font-size: 18px;
+  height: 35px;
+  width: 110px;
   background-color: #4f46e5;
   color: #ffffff;
   border: 0px;
   border-radius: 7px;
+  font-size: 13px;
   cursor: pointer;
+  @media screen and (min-width: 576px) {
+    height: 48px;
+    width: 120px;
+    font-size: 18px;
+  }
 `

@@ -4,34 +4,51 @@ import {Link} from 'react-router-dom'
 export const AnchorLink = styled(Link)`
   text-decoration: none;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   width: 100%;
   @media screen and (min-width: 576px) {
-    width: 46%;
     margin-left: 10px;
     margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 96%;
   }
   @media screen and (min-width: 768px) {
-    width: 300px;
+    width: 800px;
+    margin-left: 40px;
   }
 `
-export const HomeVideoListItem = styled.li`
+export const TrendingVideoListItem = styled.li`
   list-style-type: none;
+  @media screen and (min-width: 576px) {
+    display: flex;
+    width: 100%;
+  }
 `
 
 export const ThumbnailContainer = styled.div`
   padding: none;
+  @media screen and (min-width: 768px) {
+    margin-right: 50px;
+  }
 `
 
-export const HomeItemThumbNail = styled.img`
+export const TrendingItemThumbNail = styled.img`
   width: 100%;
+  @media screen and (min-width: 576px) {
+    height: 240px;
+    width: 350px;
+  }
 `
 
 export const ItemDetailsContainer = styled.div`
   display: flex;
   padding: 20px;
   @media screen and (min-width: 576px) {
-    padding: 10px;
+    padding: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 300px;
   }
 `
 
@@ -42,7 +59,7 @@ export const ChannelImage = styled.img`
   align-self: flex-start;
   @media screen and (min-width: 576px) {
     height: 40px;
-    margin-right: 18px;
+    margin-right: 20px;
   }
 `
 
@@ -56,19 +73,19 @@ export const VideoDescription = styled.p`
   font-size: 20px;
   line-height: 1.7;
   color: #383838;
-  font-weight: 400;
+  font-weight: 500;
   @media screen and (min-width: 576px) {
-    font-size: 17px;
+    font-size: 15px;
   }
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
+  //   @media screen and (min-width: 768px) {
+  //     font-size: 14px;
+  //   }
 `
 
 export const VideoContainer = styled.div`
   display: flex;
   color: #475569;
-  font-weight: 400;
+  font-weight: 500;
   @media screen and (min-width: 576px) {
     flex-direction: column;
     font-size: 15px;
@@ -96,14 +113,14 @@ export const ListItem1 = styled.li`
   @media screen and (min-width: 576px) {
     list-style-type: none;
   }
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
+  //   @media screen and (min-width: 768px) {
+  //     font-size: 14px;
+  //   }
 `
 export const ListItem2 = styled.li`
   margin-right: 30px;
   list-style-type: disc;
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
+  //   @media screen and (min-width: 768px) {
+  //     font-size: 14px;
+  //   }
 `
