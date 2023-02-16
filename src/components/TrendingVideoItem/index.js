@@ -12,6 +12,7 @@ import {
   ListItem1,
   ListItem2,
   AnchorLink,
+  Para,
 } from './styledComponents'
 
 const TrendingVideoItem = props => {
@@ -32,8 +33,12 @@ const TrendingVideoItem = props => {
             <VideoContainer>
               <VideoChannelName>{name}</VideoChannelName>
               <UnOrderList>
-                <ListItem1>{viewCount}</ListItem1>
-                <ListItem2>{publishedAt}</ListItem2>
+                <ListItem1>
+                  <Para>{viewCount}</Para>
+                </ListItem1>
+                <ListItem2>
+                  <Para>{publishedAt}</Para>
+                </ListItem2>
               </UnOrderList>
             </VideoContainer>
           </VideoDetails>

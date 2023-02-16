@@ -54,6 +54,11 @@ export const SocialAppItem = styled.li`
   margin-bottom: 15px;
 `
 
+export const SocialImage = styled.img`
+  height: 40px;
+  width: 40px;
+`
+
 export const ContactDescription = styled.p`
   width: 80%;
   line-height: 1.5;

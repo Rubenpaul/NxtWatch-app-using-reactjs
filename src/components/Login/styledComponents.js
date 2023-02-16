@@ -90,6 +90,8 @@ export const LoginBtn = styled.button`
   border: none;
   border-radius: 8px;
   margin-top: 20px;
+  outline: none;
+  cursor: pointer;
 `
 export const ErrorMsg = styled.p`
   color: #ff0b37;

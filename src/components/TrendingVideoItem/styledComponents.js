@@ -68,7 +68,7 @@ export const VideoDetails = styled.div`
   flex-direction: column;
 `
 
-export const VideoDescription = styled.p`
+export const VideoDescription = styled.h1`
   margin-top: 0px;
   font-size: 20px;
   line-height: 1.7;
@@ -113,10 +113,15 @@ export const ListItem1 = styled.li`
   @media screen and (min-width: 576px) {
     list-style-type: none;
   }
-  //   @media screen and (min-width: 768px) {
-  //     font-size: 14px;
-  //   }
 `
+
+export const Para = styled.p`
+  font-size: 12px;
+  @media screen and (min-width: 768px) {
+    font-size: 15px;
+  }
+`
+
 export const ListItem2 = styled.li`
   margin-right: 30px;
   list-style-type: disc;

@@ -15,6 +15,7 @@ import {
   SocialAppsContainer,
   SocialAppItem,
   ContactDescription,
+  SocialImage,
 } from './styledComponents'
 
 const SideBarContainer = () => (
@@ -41,13 +42,22 @@ const SideBarContainer = () => (
       <ContactHeading>CONTACT US</ContactHeading>
       <SocialAppsContainer>
         <SocialAppItem>
-          <FaFacebook size={40} color=" #4f46e5" />
+          <SocialImage
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
+            alt="facebook logo"
+          />
         </SocialAppItem>
         <SocialAppItem>
-          <AiFillTwitterCircle size={40} color="#3b82f6" />
+          <SocialImage
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+            alt="twitter logo"
+          />
         </SocialAppItem>
         <SocialAppItem>
-          <AiFillLinkedin size={40} color="#00306e" />
+          <SocialImage
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
+            alt="linked in logo"
+          />
         </SocialAppItem>
       </SocialAppsContainer>
       <ContactDescription>
