@@ -1,3 +1,5 @@
+import ThemeContext from '../../context/ThemeContext'
+
 import {
   GamingVideoContainer,
   GamingThumbNail,
@@ -11,13 +13,23 @@ const GamingVideoItem = props => {
   const {id, title, thumbnailUrl, viewCount} = eachVideo
 
   return (
-    <AnchorLink to={`/videos/${id}`}>
-      <GamingVideoContainer>
-        <GamingThumbNail src={thumbnailUrl} alt="video thumbnail" />
-        <GamingHeading>{title}</GamingHeading>
-        <GamingDescription>{viewCount} Watching Worldwide</GamingDescription>
-      </GamingVideoContainer>
-    </AnchorLink>
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const theme = isDarkTheme ? 'dark' : 'light'
+        return (
+          <AnchorLink to={`/videos/${id}`}>
+            <GamingVideoContainer>
+              <GamingThumbNail src={thumbnailUrl} alt="video thumbnail" />
+              <GamingHeading theme={theme}>{title}</GamingHeading>
+              <GamingDescription theme={theme}>
+                {viewCount} Watching Worldwide
+              </GamingDescription>
+            </GamingVideoContainer>
+          </AnchorLink>
+        )
+      }}
+    </ThemeContext.Consumer>
   )
 }
 

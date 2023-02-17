@@ -5,6 +5,40 @@ export const Container = styled.div`
   display: flex;
 `
 
+export const MenuContainer = styled.div`
+  background-color: ${props => (props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9')}
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    width: 80%;
+    background-color: ${props =>
+      props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9'}
+  }
+`
+
+export const MenuHeadingContainer = styled.div`
+  background-color: ${props =>
+    props.theme === 'dark' ? '#0f0f0f' : '#f1f1f1'};
+  display: flex;
+  align-items: center;
+  padding: 20px;
+`
+
+export const MenuIconContainer = styled.div`
+  background-color: #d7dfe9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 25px;
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+`
+
+export const MenuItemName = styled.h1`
+  color: ${props => (props.theme === 'dark' ? '#ffffff' : '#231f20')};
+  font-weight: bold;
+`
+
 export const NoSavedViewsContainer = styled.div`
   background-color: #f1f1f1;
   height: 100vh;
@@ -30,19 +64,28 @@ export const NoVideosImage = styled.img`
 export const NoVideosHeading = styled.h1`
   font-size: 25px;
   margin-top: 30px;
-  color: #231f20;
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
   text-align: center;
   @media screen and (min-width: 768px) {
     font-size: 28px;
     margin-top: 50px;
+    color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
   }
 `
 
 export const NoVideosDescription = styled.p`
   font-size: 20px;
-  color: #909090;
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
   text-align: center;
   @media screen and (min-width: 768px) {
     font-size: 23px;
+    color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
   }
+`
+export const VideosList = styled.ul`
+  list-style: none;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 `

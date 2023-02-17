@@ -9,6 +9,11 @@ export const SideBar = styled.div`
     width: 20%;
     height: 900px;
     font-family: 'Roboto';
+    background-color: ${props => {
+      const {theme} = props
+      const color = theme === 'dark' ? '#212121' : '#ffffff'
+      return color
+    }};
   }
 `
 
@@ -21,13 +26,18 @@ export const MenuItem = styled.li`
   display: flex;
   align-items: center;
   padding-left: 20px;
+  background-color: ${props => {
+    const {theme} = props
+    const color = theme === 'dark' ? '#424242' : '#e2e8f0'
+    return props.isActive ? color : ''
+  }};
 `
 
 export const MenuItemText = styled.p`
   margin-left: 30px;
   font-size: 18px;
   font-weight: 500;
-  color: #606060;
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#0f0f0f')};
 `
 
 export const ContactDetails = styled.div`
@@ -36,8 +46,8 @@ export const ContactDetails = styled.div`
 
 export const ContactHeading = styled.h1`
   font-size: 21px;
-  font-weight: bold;
-  color: #475569;
+  font-weight: 500;
+  color: ${props => (props.theme === 'dark' ? '#ffffff' : '#424242')};
 `
 
 export const SocialAppsContainer = styled.ul`

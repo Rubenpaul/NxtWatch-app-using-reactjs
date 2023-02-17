@@ -4,6 +4,7 @@ import {AiOutlineSearch} from 'react-icons/ai'
 import {Component} from 'react'
 import cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+import ThemeContext from '../../context/ThemeContext'
 
 import NavBar from '../NavBar'
 import SideBarContainer from '../SideBarContainer'
@@ -135,19 +136,29 @@ class Home extends Component {
   }
 
   renderNoViews = () => (
-    <FailureContainer>
-      <FailureImage
-        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
-        alt="no videos"
-      />
-      <FailureHeading>No Search results found</FailureHeading>
-      <FailureParagraph>
-        Try different key words or remove search filter
-      </FailureParagraph>
-      <FailureRetryBtn type="button" onClick={this.onClickRetry}>
-        Retry
-      </FailureRetryBtn>
-    </FailureContainer>
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const theme = isDarkTheme ? 'dark' : 'light'
+        return (
+          <FailureContainer>
+            <FailureImage
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+              alt="no videos"
+            />
+            <FailureHeading theme={theme}>
+              No Search results found
+            </FailureHeading>
+            <FailureParagraph theme={theme}>
+              Try different key words or remove search filter
+            </FailureParagraph>
+            <FailureRetryBtn type="button" onClick={this.onClickRetry}>
+              Retry
+            </FailureRetryBtn>
+          </FailureContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
   )
 
   renderHomeSuccessView = () => {
@@ -161,25 +172,52 @@ class Home extends Component {
   }
 
   renderLoaderView = () => (
-    <LoaderContainer>
-      <Loader type="ThreeDots" color="#00306e" height="50" width="50" />
-    </LoaderContainer>
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+
+        return (
+          <LoaderContainer>
+            <Loader
+              type="ThreeDots"
+              color={isDarkTheme ? '#ffffff' : '#000000'}
+              height="50"
+              width="50"
+              data-testid="loader"
+            />
+          </LoaderContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
   )
 
   renderHomeFailureView = () => (
-    <FailureContainer>
-      <FailureImage
-        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-        alt="failure view"
-      />
-      <FailureHeading>Oops! Something Went Wrong</FailureHeading>
-      <FailureParagraph>
-        We are having some trouble to complete your request. Please try again
-      </FailureParagraph>
-      <FailureRetryBtn type="button" onClick={this.onClickRetry}>
-        Retry
-      </FailureRetryBtn>
-    </FailureContainer>
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const theme = isDarkTheme ? 'dark' : 'light'
+
+        const imageUrl = isDarkTheme
+          ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+          : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+
+        return (
+          <FailureContainer>
+            <FailureImage src={imageUrl} alt="failure view" />
+            <FailureHeading theme={theme}>
+              Oops! Something Went Wrong
+            </FailureHeading>
+            <FailureParagraph theme={theme}>
+              We are having some trouble to complete your request. Please try
+              again
+            </FailureParagraph>
+            <FailureRetryBtn type="button" onClick={this.onClickRetry}>
+              Retry
+            </FailureRetryBtn>
+          </FailureContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
   )
 
   renderHomeResultView = () => {
@@ -197,13 +235,13 @@ class Home extends Component {
   }
 
   renderBannerSection = () => (
-    <Banner>
+    <Banner data-testid="banner">
       <BannerTopContainer>
         <WebsiteLogo
           src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
           alt="nxt watch logo"
         />
-        <CloseBtn onClick={this.onClickCloseBtn}>
+        <CloseBtn onClick={this.onClickCloseBtn} data-testid="close">
           <RiCloseLine size={30} />
         </CloseBtn>
       </BannerTopContainer>
@@ -215,29 +253,43 @@ class Home extends Component {
   render() {
     const {searchInput, isCloseClicked} = this.state
     return (
-      <>
-        <NavBar />
-        <Container>
-          <SideBarContainer />
-          <HomeDetails>
-            {isCloseClicked ? null : this.renderBannerSection()}
-            <HomeSearchAndDetailsContainer>
-              <SearchContainer>
-                <SearchInput
-                  type="search"
-                  placeholder="Search"
-                  value={searchInput}
-                  onChange={this.onChangeSearchInput}
-                />
-                <SearchBtn type="button" onClick={this.onClickSearch}>
-                  <AiOutlineSearch size={20} />
-                </SearchBtn>
-              </SearchContainer>
-              {this.renderHomeResultView()}
-            </HomeSearchAndDetailsContainer>
-          </HomeDetails>
-        </Container>
-      </>
+      <ThemeContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+
+          const theme = isDarkTheme ? 'dark' : 'light'
+          return (
+            <>
+              <NavBar />
+              <Container>
+                <SideBarContainer />
+                <HomeDetails data-testid="home" theme={theme}>
+                  {isCloseClicked ? null : this.renderBannerSection()}
+                  <HomeSearchAndDetailsContainer>
+                    <SearchContainer>
+                      <SearchInput
+                        type="search"
+                        placeholder="Search"
+                        value={searchInput}
+                        onChange={this.onChangeSearchInput}
+                        theme={theme}
+                      />
+                      <SearchBtn
+                        type="button"
+                        onClick={this.onClickSearch}
+                        theme={theme}
+                      >
+                        <AiOutlineSearch size={20} />
+                      </SearchBtn>
+                    </SearchContainer>
+                    {this.renderHomeResultView()}
+                  </HomeSearchAndDetailsContainer>
+                </HomeDetails>
+              </Container>
+            </>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 }

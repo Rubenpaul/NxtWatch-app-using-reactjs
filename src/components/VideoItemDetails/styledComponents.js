@@ -6,12 +6,14 @@ export const Container = styled.div`
 `
 
 export const MenuContainer = styled.div`
-  background-color: #f9f9f9;
+  background-color: ${props => (props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9')}
   width: 100%;
   padding: 20px;
   @media screen and (min-width: 768px) {
     width: 80%;
     margin-right: 20px;
+    background-color: ${props =>
+      props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9'}
   }
 `
 export const ReactPlayerContainer = styled.div`
@@ -26,11 +28,12 @@ export const VideoItemDetailsContainer = styled.div`
 `
 export const VideoTitle = styled.h1`
   font-size: 21px;
-  color: #383838;
+  color: ${props => (props.theme === 'dark' ? '#ffffff' : ' #383838')}
   line-height: 1.5;
   font-weight: 500;
   @media screen and (min-width: 768px) {
     font-size: 25px;
+    color: ${props => (props.theme === 'dark' ? '#ffffff' : ' #383838')}
   }
 `
 
@@ -93,7 +96,7 @@ export const VideoIcon = styled.li`
 export const VideoIconType = styled.p`
   margin-left: 8px;
   font-size: 16px;
-  color: #64748b;
+  color: ${props => (props.theme === 'active' ? '#2563eb' : '#64748b')};
   font-weight: 500;
 `
 export const HorizontalLine = styled.hr`
@@ -127,10 +130,11 @@ export const VideoChannelContainer = styled.div`
 export const VideoChannel = styled.h1`
   font-size: 17px;
   margin-bottom: 2px;
-  color: #1e293b;
+  color: ${props => (props.theme === 'dark' ? '#ffffff' : '#1e293b')}
   font-weight: 500;
   @media screen and (min-width: 768px) {
     font-size: 20px;
+     color: ${props => (props.theme === 'dark' ? '#ffffff' : '#1e293b')}
   } ;
 `
 
@@ -171,7 +175,7 @@ export const FailureImage = styled.img`
 `
 
 export const FailureHeading = styled.h1`
-  color: #383838;
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
   font-size: 24px;
   text-align: center;
   width: 90%;
@@ -183,7 +187,7 @@ export const FailureHeading = styled.h1`
 `
 
 export const FailureParagraph = styled.p`
-  color: #909090;
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
   font-size: 17px;
   text-align: center;
   width: 80%;
@@ -207,4 +211,12 @@ export const FailureRetryBtn = styled.button`
     width: 120px;
     font-size: 18px;
   }
+`
+
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  color: ${props => (props.theme === 'active' ? '#2563eb' : '#64748b')};
+  background-color: transparent;
+  border: 0px;
 `

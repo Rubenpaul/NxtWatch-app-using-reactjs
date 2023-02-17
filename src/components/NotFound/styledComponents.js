@@ -6,7 +6,8 @@ export const Container = styled.div`
 `
 
 export const NotFoundContainer = styled.div`
-  background-color: #f9f9f9;
+  background-color: ${props =>
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   height: 100vh;
   width: 100%;
   display: flex;
@@ -16,6 +17,8 @@ export const NotFoundContainer = styled.div`
   @media screen and (min-width: 768px) {
     width: 80%;
     height: 900px;
+    background-color: ${props =>
+      props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   }
 `
 
@@ -32,9 +35,10 @@ export const NotFoundHeading = styled.h1`
   font-size: 20px;
   text-align: center;
   margin-top: 30px;
-  color: #1e293b;
+  color: ${props => (props.isDarkTheme === true ? '#ffffff' : '#1e293b')};
   @media screen and (min-width: 768px) {
     font-size: 50px;
+    color: ${props => (props.isDarkTheme === true ? '#ffffff' : '#1e293b')};
   }
 `
 
@@ -43,8 +47,9 @@ export const NotFoundDescription = styled.p`
   text-align: center;
   width: 70%;
   margin-top: 0px;
-  color: ;
+  color: ${props => (props.isDarkTheme === true ? '#ffffff' : '#1e293b')};
   @media screen and (min-width: 768px) {
     font-size: 20px;
+    color: ${props => (props.isDarkTheme === true ? '#ffffff' : '#1e293b')};
   }
 `

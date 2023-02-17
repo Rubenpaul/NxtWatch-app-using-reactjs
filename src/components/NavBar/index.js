@@ -5,7 +5,7 @@ import './index.css'
 
 import {FaMoon} from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
-import {FiLogOut} from 'react-icons/fi'
+import {FiLogOut, FiSun} from 'react-icons/fi'
 
 import Popup from 'reactjs-popup'
 
@@ -24,6 +24,7 @@ import {
   Paragraph,
   Button,
   ButtonContainer,
+  PopupContent,
 } from './styledComponents'
 
 const NavBar = props => (
@@ -38,28 +39,35 @@ const NavBar = props => (
         history.replace('/login')
       }
 
-      const onClickChangeTheme = () => {}
+      const theme = isDarkTheme ? 'dark' : 'light'
 
+      const imageUrl = isDarkTheme
+        ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
+        : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
       return (
-        <NavContainer>
+        <NavContainer theme={theme}>
           <Link to="/">
-            <AppLogo
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-              alt="website logo"
-            />
+            <AppLogo src={imageUrl} alt="website logo" />
           </Link>
 
           <NavItemsContainer>
-            <NavItem onClick={changeTheme}>
+            <NavItem onClick={changeTheme} data-testid="theme">
               <NavButton>
-                <FaMoon size={30} />
+                {theme === 'dark' ? (
+                  <FiSun size={30} color="#ffffff" />
+                ) : (
+                  <FaMoon size={30} />
+                )}
               </NavButton>
             </NavItem>
 
             <ResponseContainerMobile>
-              <NavItem>
+              <NavItem onClick={changeTheme}>
                 <NavButton>
-                  <GiHamburgerMenu size={30} />
+                  <GiHamburgerMenu
+                    size={30}
+                    color={theme === 'dark' ? '#ffffff' : null}
+                  />
                 </NavButton>
               </NavItem>
 
@@ -68,11 +76,13 @@ const NavBar = props => (
                 trigger={
                   <NavItem>
                     <NavButton>
-                      <FiLogOut size={30} />
+                      <FiLogOut
+                        size={30}
+                        color={theme === 'dark' ? '#ffffff' : null}
+                      />
                     </NavButton>
                   </NavItem>
                 }
-                className="popup-content"
               >
                 {close => (
                   <>
@@ -105,14 +115,15 @@ const NavBar = props => (
                 modal
                 trigger={
                   <NavItem>
-                    <LogoutBtn>Logout</LogoutBtn>
+                    <LogoutBtn theme={theme}>Logout</LogoutBtn>
                   </NavItem>
                 }
-                className="popup-content"
               >
                 {close => (
-                  <>
-                    <Paragraph>Are you sure you want to logout?</Paragraph>
+                  <PopupContent theme={theme}>
+                    <Paragraph theme={theme}>
+                      Are you sure you want to logout?
+                    </Paragraph>
                     <ButtonContainer>
                       <Button type="button" onClick={() => close()} outline>
                         Cancel
@@ -122,7 +133,7 @@ const NavBar = props => (
                         Confirm
                       </Button>
                     </ButtonContainer>
-                  </>
+                  </PopupContent>
                 )}
               </Popup>
             </ResponseContainerDesktop>

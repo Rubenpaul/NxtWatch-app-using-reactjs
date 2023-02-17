@@ -7,8 +7,12 @@ export const Container = styled.div`
 
 export const HomeDetails = styled.div`
   width: 100%;
+  background-color: ${props =>
+    props.theme === 'dark' ? '#181818' : '#f9f9f9'};
   @media screen and (min-width: 768px) {
     width: 80%;
+    background-color: ${props =>
+      props.theme === 'dark' ? '#181818' : '#f9f9f9'};
   }
 `
 
@@ -72,7 +76,6 @@ export const GetItNowBtn = styled.button`
 
 export const HomeSearchAndDetailsContainer = styled.div`
   padding-top: 10px;
-  background-color: #f1f1f1;
 `
 
 export const SearchContainer = styled.div`
@@ -84,6 +87,7 @@ export const SearchContainer = styled.div`
   height: 45px;
   padding: 0px;
   border-radius: 6px;
+  background-color: transparent;
   @media screen and (min-width: 768px) {
     width: 43%;
   }
@@ -96,7 +100,8 @@ export const SearchInput = styled.input`
   padding-left: 20px;
   font-size: 16px;
   outline: none;
-  color: #475569;
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
+  background-color: transparent;
 `
 
 export const SearchBtn = styled.button`
@@ -104,6 +109,8 @@ export const SearchBtn = styled.button`
   width: 15%;
   height: 100%;
   cursor: pointer;
+  background-color: ${props =>
+    props.theme === 'dark' ? '#7e858e' : '#f9f9f9'};
 `
 
 export const LoaderContainer = styled.div`
@@ -138,6 +145,7 @@ export const FailureContainer = styled(LoaderContainer)`
 export const FailureImage = styled.img`
   height: 200px;
   width: 230px;
+
   @media screen and (min-width: 576px) {
     height: 300px;
     width: 350px;
@@ -145,7 +153,7 @@ export const FailureImage = styled.img`
 `
 
 export const FailureHeading = styled.h1`
-  color: #383838;
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
   font-size: 24px;
   text-align: center;
   width: 90%;
@@ -157,7 +165,7 @@ export const FailureHeading = styled.h1`
 `
 
 export const FailureParagraph = styled.p`
-  color: #909090;
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
   font-size: 17px;
   text-align: center;
   width: 80%;

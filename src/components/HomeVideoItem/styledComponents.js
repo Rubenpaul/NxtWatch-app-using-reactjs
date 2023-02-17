@@ -1,20 +1,19 @@
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
 
-export const AnchorLink = styled(Link)`
-  text-decoration: none;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  @media screen and (min-width: 576px) {
-    width: 46%;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  @media screen and (min-width: 768px) {
-    width: 300px;
-  }
-`
+// export const AnchorLink = styled(Link)`
+//   text-decoration: none;
+//   margin-top: 10px;
+//   margin-bottom: 20px;
+//   width: 100%;
+//   @media screen and (min-width: 576px) {
+//     width: 46%;
+//     margin-left: 10px;
+//     margin-right: 10px;
+//   }
+//   @media screen and (min-width: 768px) {
+//     width: 300px;
+// //   }
+// `
 export const HomeVideoListItem = styled.li`
   list-style-type: none;
 `
@@ -55,20 +54,23 @@ export const VideoDescription = styled.p`
   margin-top: 0px;
   font-size: 20px;
   line-height: 1.7;
-  color: #383838;
+  text-decoration:none;
+  color: ${props => (props.theme === 'dark' ? '#ffffff' : '#181818')} 
   font-weight: 400;
   @media screen and (min-width: 576px) {
     font-size: 17px;
+    color: ${props => (props.theme === 'dark' ? '#ffffff' : '#ffffff')}
   }
   @media screen and (min-width: 768px) {
     font-size: 14px;
+    color: ${props => (props.theme === 'dark' ? '#ffffff' : '#181818')} 
   }
 `
 
 export const VideoContainer = styled.div`
   display: flex;
   color: #475569;
-  font-weight: 400;
+  font-weight: bold;
   @media screen and (min-width: 576px) {
     flex-direction: column;
     font-size: 15px;

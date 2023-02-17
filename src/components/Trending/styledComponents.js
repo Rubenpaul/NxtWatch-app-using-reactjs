@@ -6,15 +6,18 @@ export const Container = styled.div`
 `
 
 export const MenuContainer = styled.div`
-  background-color: #f9f9f9;
+  background-color: ${props => (props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9')}
   width: 100%;
   @media screen and (min-width: 768px) {
     width: 80%;
+    background-color: ${props =>
+      props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9'}
   }
 `
 
 export const MenuHeadingContainer = styled.div`
-  background-color: #f1f1f1;
+  background-color: ${props =>
+    props.theme === 'dark' ? '#0f0f0f' : '#f1f1f1'};
   display: flex;
   align-items: center;
   padding: 20px;
@@ -32,7 +35,7 @@ export const MenuIconContainer = styled.div`
 `
 
 export const MenuItemName = styled.h1`
-  color: #231f20;
+  color: ${props => (props.theme === 'dark' ? '#ffffff' : '#231f20')};
   font-weight: bold;
 `
 export const LoaderContainer = styled.div`
@@ -64,7 +67,7 @@ export const FailureImage = styled.img`
 `
 
 export const FailureHeading = styled.h1`
-  color: #383838;
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
   font-size: 24px;
   text-align: center;
   width: 90%;
@@ -76,7 +79,7 @@ export const FailureHeading = styled.h1`
 `
 
 export const FailureParagraph = styled.p`
-  color: #909090;
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
   font-size: 17px;
   text-align: center;
   width: 80%;

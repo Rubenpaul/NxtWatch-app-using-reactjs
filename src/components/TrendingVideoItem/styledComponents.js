@@ -72,19 +72,19 @@ export const VideoDescription = styled.h1`
   margin-top: 0px;
   font-size: 20px;
   line-height: 1.7;
-  color: #383838;
+  color: ${props => (props.theme === 'dark' ? '#ffffff' : '#383838')}
   font-weight: 500;
   @media screen and (min-width: 576px) {
     font-size: 15px;
+    color: ${props => (props.theme === 'dark' ? '#ffffff' : '#383838')}
   }
-  //   @media screen and (min-width: 768px) {
-  //     font-size: 14px;
-  //   }
+    @media screen and (min-width: 768px) {
+     color: ${props => (props.theme === 'dark' ? '#ffffff' : '#383838')}
+    }
 `
 
 export const VideoContainer = styled.div`
   display: flex;
-  color: #475569;
   font-weight: 500;
   @media screen and (min-width: 576px) {
     flex-direction: column;
@@ -95,13 +95,16 @@ export const VideoContainer = styled.div`
 export const VideoChannelName = styled.p`
   margin-top: 0px;
   margin-right: 0px;
+  color: ${props => (props.theme === 'dark' ? '#f4f4f4' : '#475569')};
   @media screen and (min-width: 768px) {
     font-size: 14px;
+    color: ${props => (props.theme === 'dark' ? '#f4f4f4' : '#475569')};
   }
 `
 
 export const UnOrderList = styled.ul`
   display: flex;
+
   @media screen and (min-width: 576px) {
     padding-left: 0px;
   }
@@ -110,21 +113,28 @@ export const UnOrderList = styled.ul`
 export const ListItem1 = styled.li`
   margin-right: 30px;
   list-style-type: disc;
+
+  color: ${props => (props.theme === 'dark' ? '#f4f4f4' : '#475569')};
+
   @media screen and (min-width: 576px) {
     list-style-type: none;
+    color: ${props => (props.theme === 'dark' ? '#f4f4f4' : '#475569')};
   }
 `
 
 export const Para = styled.p`
   font-size: 12px;
+  color: ${props => (props.theme === 'dark' ? '#f4f4f4' : '#475569')};
   @media screen and (min-width: 768px) {
     font-size: 15px;
+    color: ${props => (props.theme === 'dark' ? '#f4f4f4' : '#475569')};
   }
 `
 
 export const ListItem2 = styled.li`
   margin-right: 30px;
   list-style-type: disc;
+  color: ${props => (props.theme === 'dark' ? '#f4f4f4' : '#475569')};
   //   @media screen and (min-width: 768px) {
   //     font-size: 14px;
   //   }

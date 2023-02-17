@@ -8,6 +8,8 @@ import NavBar from '../NavBar'
 import SideBarContainer from '../SideBarContainer'
 import TrendingVideoItem from '../TrendingVideoItem'
 
+import ThemeContext from '../../context/ThemeContext'
+
 import {
   Container,
   MenuContainer,
@@ -100,9 +102,23 @@ class Trending extends Component {
   }
 
   renderLoaderView = () => (
-    <LoaderContainer>
-      <Loader type="ThreeDots" color="#00306e" height="50" width="50" />
-    </LoaderContainer>
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+
+        return (
+          <LoaderContainer>
+            <Loader
+              type="ThreeDots"
+              color={isDarkTheme ? '#ffffff' : '#000000'}
+              height="50"
+              width="50"
+              data-testid="loader"
+            />
+          </LoaderContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
   )
 
   renderTrendingVideos = () => {
@@ -117,19 +133,32 @@ class Trending extends Component {
   }
 
   renderTrendingFailureView = () => (
-    <FailureContainer>
-      <FailureImage
-        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-        alt="failure view"
-      />
-      <FailureHeading>Oops! Something Went Wrong</FailureHeading>
-      <FailureParagraph>
-        We are having some trouble to complete your request. Please try again
-      </FailureParagraph>
-      <FailureRetryBtn type="button" onClick={this.onClickRetry}>
-        Retry
-      </FailureRetryBtn>
-    </FailureContainer>
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const theme = isDarkTheme ? 'dark' : 'light'
+
+        const imageUrl = isDarkTheme
+          ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+          : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+
+        return (
+          <FailureContainer>
+            <FailureImage src={imageUrl} alt="failure view" />
+            <FailureHeading theme={theme}>
+              Oops! Something Went Wrong
+            </FailureHeading>
+            <FailureParagraph theme={theme}>
+              We are having some trouble to complete your request. Please try
+              again
+            </FailureParagraph>
+            <FailureRetryBtn type="button" onClick={this.onClickRetry}>
+              Retry
+            </FailureRetryBtn>
+          </FailureContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
   )
 
   renderTrendingResultView = () => {
@@ -148,21 +177,30 @@ class Trending extends Component {
 
   render() {
     return (
-      <>
-        <NavBar />
-        <Container>
-          <SideBarContainer />
-          <MenuContainer>
-            <MenuHeadingContainer>
-              <MenuIconContainer>
-                <HiFire size={45} color="#ff0000" />
-              </MenuIconContainer>
-              <MenuItemName>Trending</MenuItemName>
-            </MenuHeadingContainer>
-            {this.renderTrendingResultView()}
-          </MenuContainer>
-        </Container>
-      </>
+      <ThemeContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+          const theme = isDarkTheme ? 'dark' : 'light'
+
+          return (
+            <>
+              <NavBar />
+              <Container>
+                <SideBarContainer />
+                <MenuContainer theme={theme} data-testid="trending">
+                  <MenuHeadingContainer theme={theme} data-testid="banner">
+                    <MenuIconContainer>
+                      <HiFire size={45} color="#ff0000" />
+                    </MenuIconContainer>
+                    <MenuItemName theme={theme}>Trending</MenuItemName>
+                  </MenuHeadingContainer>
+                  {this.renderTrendingResultView()}
+                </MenuContainer>
+              </Container>
+            </>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 }

@@ -1,0 +1,19 @@
+.link {
+  text-decoration: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .link {
+    width: 46%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .link {
+    width: 300px;
+  }
+}

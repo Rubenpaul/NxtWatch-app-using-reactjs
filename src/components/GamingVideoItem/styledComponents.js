@@ -37,17 +37,18 @@ export const GamingThumbNail = styled.img`
 
 export const GamingHeading = styled.h1`
   font-size: 17px;
-  color: #424242;
+  color: ${props => (props.theme === 'dark' ? '#ffffff' : '#424242')};
 `
 
 export const GamingDescription = styled.p`
   font-size: 17px;
-  color: #616e7c;
+  color: ${props => (props.theme === 'dark' ? '#ffffff' : '#616e7c')};
   line-height: 1.5;
   margin-top: 0px;
   width: 70%;
   @media screen and (min-width: 576px) {
     width: 100%;
     font-size: 16px;
+    color: ${props => (props.theme === 'dark' ? '#ffffff' : '#616e7c')};
   }
 `
