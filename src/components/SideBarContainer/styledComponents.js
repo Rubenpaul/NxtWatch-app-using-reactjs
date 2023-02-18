@@ -44,7 +44,7 @@ export const ContactDetails = styled.div`
   padding-left: 20px;
 `
 
-export const ContactHeading = styled.h1`
+export const ContactHeading = styled.p`
   font-size: 21px;
   font-weight: 500;
   color: ${props => (props.theme === 'dark' ? '#ffffff' : '#424242')};

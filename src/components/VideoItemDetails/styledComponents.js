@@ -26,7 +26,7 @@ export const ReactPlayerContainer = styled.div`
 export const VideoItemDetailsContainer = styled.div`
   padding: 20px;
 `
-export const VideoTitle = styled.h1`
+export const VideoTitle = styled.p`
   font-size: 21px;
   color: ${props => (props.theme === 'dark' ? '#ffffff' : ' #383838')}
   line-height: 1.5;
@@ -127,7 +127,7 @@ export const VideoChannelContainer = styled.div`
   flex-direction: column;
 `
 
-export const VideoChannel = styled.h1`
+export const VideoChannel = styled.p`
   font-size: 17px;
   margin-bottom: 2px;
   color: ${props => (props.theme === 'dark' ? '#ffffff' : '#1e293b')}

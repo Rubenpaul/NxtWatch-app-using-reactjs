@@ -51,8 +51,8 @@ const NavBar = props => (
           </Link>
 
           <NavItemsContainer>
-            <NavItem onClick={changeTheme} data-testid="theme">
-              <NavButton>
+            <NavItem>
+              <NavButton onClick={changeTheme} data-testid="theme">
                 {theme === 'dark' ? (
                   <FiSun size={30} color="#ffffff" />
                 ) : (
@@ -62,7 +62,7 @@ const NavBar = props => (
             </NavItem>
 
             <ResponseContainerMobile>
-              <NavItem onClick={changeTheme}>
+              <NavItem>
                 <NavButton>
                   <GiHamburgerMenu
                     size={30}
@@ -86,7 +86,7 @@ const NavBar = props => (
               >
                 {close => (
                   <>
-                    <Paragraph>Are you sure you want to logout?</Paragraph>
+                    <Paragraph>Are you sure, you want to logout</Paragraph>
                     <ButtonContainer>
                       <Button type="button" onClick={() => close()} outline>
                         Cancel
@@ -122,7 +122,7 @@ const NavBar = props => (
                 {close => (
                   <PopupContent theme={theme}>
                     <Paragraph theme={theme}>
-                      Are you sure you want to logout?
+                      Are you sure, you want to logout
                     </Paragraph>
                     <ButtonContainer>
                       <Button type="button" onClick={() => close()} outline>

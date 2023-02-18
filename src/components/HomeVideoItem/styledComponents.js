@@ -85,14 +85,14 @@ export const VideoChannelName = styled.p`
   }
 `
 
-export const UnOrderList = styled.ul`
+export const UnOrderList = styled.div`
   display: flex;
   @media screen and (min-width: 576px) {
     padding-left: 0px;
   }
 `
 
-export const ListItem1 = styled.li`
+export const ListItem1 = styled.p`
   margin-right: 30px;
   list-style-type: disc;
   @media screen and (min-width: 576px) {
@@ -102,7 +102,7 @@ export const ListItem1 = styled.li`
     font-size: 14px;
   }
 `
-export const ListItem2 = styled.li`
+export const ListItem2 = styled.p`
   margin-right: 30px;
   list-style-type: disc;
   @media screen and (min-width: 768px) {

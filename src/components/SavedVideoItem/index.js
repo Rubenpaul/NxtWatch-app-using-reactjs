@@ -11,18 +11,17 @@ import {
   VideoContainer,
   VideoChannelName,
   UnOrderList,
-  ListItem1,
-  ListItem2,
-  AnchorLink,
   Para,
+  AnchorLink,
 } from './styledComponents'
 
 import ThemeContext from '../../context/ThemeContext'
 
-const TrendingVideoItem = props => (
+const SavedVideoItem = props => (
   <ThemeContext.Consumer>
     {value => {
       const {isDarkTheme} = value
+      const theme = isDarkTheme ? 'dark' : 'light'
 
       const {eachVideo} = props
       const {
@@ -45,37 +44,29 @@ const TrendingVideoItem = props => (
       }
 
       return (
-        <AnchorLink to={`/videos/${id}`}>
-          <TrendingVideoListItem>
+        <TrendingVideoListItem>
+          <AnchorLink to={`/videos/${id}`}>
             <ThumbnailContainer>
               <TrendingItemThumbNail src={thumbnailUrl} alt="video thumbnail" />
             </ThumbnailContainer>
             <ItemDetailsContainer>
               <ChannelImage src={profileImageUrl} alt="channel logo" />
               <VideoDetails>
-                <VideoDescription isDarkTheme={isDarkTheme}>
-                  {title}
-                </VideoDescription>
+                <VideoDescription theme={theme}>{title}</VideoDescription>
                 <VideoContainer>
-                  <VideoChannelName isDarkTheme={isDarkTheme}>
-                    {name}
-                  </VideoChannelName>
+                  <VideoChannelName theme={theme}>{name}</VideoChannelName>
                   <UnOrderList>
-                    <ListItem1>
-                      <Para isDarkTheme={isDarkTheme}>{viewCount}</Para>
-                    </ListItem1>
-                    <ListItem2>
-                      <Para isDarkTheme={isDarkTheme}>{postedAt} ago</Para>
-                    </ListItem2>
+                    <Para theme={theme}>{viewCount}</Para>
+                    <Para theme={theme}>{postedAt} ago</Para>
                   </UnOrderList>
                 </VideoContainer>
               </VideoDetails>
             </ItemDetailsContainer>
-          </TrendingVideoListItem>
-        </AnchorLink>
+          </AnchorLink>
+        </TrendingVideoListItem>
       )
     }}
   </ThemeContext.Consumer>
 )
 
-export default TrendingVideoItem
+export default SavedVideoItem

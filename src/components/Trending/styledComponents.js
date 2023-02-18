@@ -6,18 +6,19 @@ export const Container = styled.div`
 `
 
 export const MenuContainer = styled.div`
-  background-color: ${props => (props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9')}
   width: 100%;
+  background-color: ${props =>
+    props.isDarkTheme === true ? '#0f0f0f' : '#f1f1f1'};
   @media screen and (min-width: 768px) {
     width: 80%;
     background-color: ${props =>
-      props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9'}
+      props.isDarkTheme === true ? '#0f0f0f' : '#f1f1f1'};
   }
 `
 
 export const MenuHeadingContainer = styled.div`
   background-color: ${props =>
-    props.theme === 'dark' ? '#0f0f0f' : '#f1f1f1'};
+    props.isDarkTheme === true ? '#0f0f0f' : '#f1f1f1'};
   display: flex;
   align-items: center;
   padding: 20px;
@@ -35,7 +36,7 @@ export const MenuIconContainer = styled.div`
 `
 
 export const MenuItemName = styled.h1`
-  color: ${props => (props.theme === 'dark' ? '#ffffff' : '#231f20')};
+  color: ${props => (props.isDarkTheme === true ? '#ffffff' : '#231f20')};
   font-weight: bold;
 `
 export const LoaderContainer = styled.div`
@@ -67,7 +68,7 @@ export const FailureImage = styled.img`
 `
 
 export const FailureHeading = styled.h1`
-  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
+  color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   font-size: 24px;
   text-align: center;
   width: 90%;
@@ -75,17 +76,19 @@ export const FailureHeading = styled.h1`
   margin-top: 30px;
   @media screen and (min-width: 576px) {
     font-size: 27px;
+    color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   }
 `
 
 export const FailureParagraph = styled.p`
-  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
+  color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   font-size: 17px;
   text-align: center;
   width: 80%;
   line-height: 2;
   @media screen and (min-width: 576px) {
     font-size: 21px;
+    color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   }
 `
 

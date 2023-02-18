@@ -5,7 +5,7 @@ import NavBar from '../NavBar'
 import SideBarContainer from '../SideBarContainer'
 import ThemeContext from '../../context/ThemeContext'
 import SavedVideosContext from '../../context/SavedVideosContext'
-import TrendingVideoItem from '../TrendingVideoItem'
+import SavedVideoItem from '../SavedVideoItem'
 
 import {
   Container,
@@ -49,7 +49,7 @@ class SavedVideos extends Component {
           return (
             <VideosList>
               {savedVideosList.map(eachVideo => (
-                <TrendingVideoItem eachVideo={eachVideo} key={eachVideo.id} />
+                <SavedVideoItem eachVideo={eachVideo} key={eachVideo.id} />
               ))}
             </VideosList>
           )

@@ -8,11 +8,11 @@ export const Container = styled.div`
 export const HomeDetails = styled.div`
   width: 100%;
   background-color: ${props =>
-    props.theme === 'dark' ? '#181818' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   @media screen and (min-width: 768px) {
     width: 80%;
     background-color: ${props =>
-      props.theme === 'dark' ? '#181818' : '#f9f9f9'};
+      props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   }
 `
 
@@ -100,7 +100,7 @@ export const SearchInput = styled.input`
   padding-left: 20px;
   font-size: 16px;
   outline: none;
-  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
+  color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   background-color: transparent;
 `
 
@@ -110,7 +110,7 @@ export const SearchBtn = styled.button`
   height: 100%;
   cursor: pointer;
   background-color: ${props =>
-    props.theme === 'dark' ? '#7e858e' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#7e858e' : '#f9f9f9'};
 `
 
 export const LoaderContainer = styled.div`
@@ -153,7 +153,7 @@ export const FailureImage = styled.img`
 `
 
 export const FailureHeading = styled.h1`
-  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
+  color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   font-size: 24px;
   text-align: center;
   width: 90%;
@@ -161,17 +161,19 @@ export const FailureHeading = styled.h1`
   margin-top: 30px;
   @media screen and (min-width: 576px) {
     font-size: 27px;
+    color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   }
 `
 
 export const FailureParagraph = styled.p`
-  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
+  color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   font-size: 17px;
   text-align: center;
   width: 80%;
   line-height: 2;
   @media screen and (min-width: 576px) {
     font-size: 21px;
+    color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   }
 `
 

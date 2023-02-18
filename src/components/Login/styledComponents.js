@@ -6,9 +6,12 @@ export const LoginContainer = styled.div`
   justify-content: center;
   align-items: center;
   font-family: 'Roboto';
-  background-color: #f9f9f9;
+  background-color: ${props =>
+    props.isDarkTheme === true ? '#0f0f0f' : '#f9f9f9'};
   @media screen and (min-width: 768px) {
     height: 100vh;
+    background-color: ${props =>
+      props.isDarkTheme === true ? '#0f0f0f' : '#f9f9f9'};
   }
 `
 
@@ -19,12 +22,15 @@ export const LoginCard = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: ${props =>
+    props.isDarkTheme === true ? 'black' : 'white'};
   box-shadow: 10px 10px 8px 10px #f9f9f9;
   border-radius: 10px;
   margin: 20px;
   @media screen and (min-width: 768px) {
     width: 40%;
+    background-color: ${props =>
+      props.isDarkTheme === true ? 'black' : 'white'};
   }
 `
 
@@ -50,14 +56,16 @@ export const InputAndLabelContainer = styled.div`
 export const Label = styled.label`
   font-weight: 500;
   font-size: 13px;
-  color: #64748b;
+  color: ${props => (props.isDarkTheme === true ? 'white' : '#475569')};
   margin-bottom: 10px;
 `
 
 export const Input = styled.input`
   height: 45px;
   padding-left: 25px;
-  color: #475569;
+  background-color: ${props =>
+    props.isDarkTheme === true ? 'black' : 'white'};
+
   border: 1px solid #e2e8f0;
   border-radius: 5px;
   outline: none;
@@ -74,9 +82,9 @@ export const Checkbox = styled.input`
   margin-right: 10px;
 `
 
-export const ShowPasswordText = styled.p`
+export const ShowPasswordLabel = styled.label`
   font-size: 15px;
-  color: #181818;
+  color: ${props => (props.isDarkTheme === true ? 'white' : 'black')};
   font-weight: 500;
 `
 

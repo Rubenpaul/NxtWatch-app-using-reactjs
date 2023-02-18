@@ -74,7 +74,7 @@ class Home extends Component {
 
     if (response.ok === true) {
       this.onSubmitSuccess(updatedData)
-    } else {
+    } else if (response.ok === false) {
       this.onSubmitFailure()
     }
   }
@@ -139,17 +139,16 @@ class Home extends Component {
     <ThemeContext.Consumer>
       {value => {
         const {isDarkTheme} = value
-        const theme = isDarkTheme ? 'dark' : 'light'
         return (
           <FailureContainer>
             <FailureImage
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
               alt="no videos"
             />
-            <FailureHeading theme={theme}>
+            <FailureHeading isDarkTheme={isDarkTheme}>
               No Search results found
             </FailureHeading>
-            <FailureParagraph theme={theme}>
+            <FailureParagraph isDarkTheme={isDarkTheme}>
               Try different key words or remove search filter
             </FailureParagraph>
             <FailureRetryBtn type="button" onClick={this.onClickRetry}>
@@ -177,13 +176,12 @@ class Home extends Component {
         const {isDarkTheme} = value
 
         return (
-          <LoaderContainer>
+          <LoaderContainer data-testid="loader">
             <Loader
               type="ThreeDots"
               color={isDarkTheme ? '#ffffff' : '#000000'}
               height="50"
               width="50"
-              data-testid="loader"
             />
           </LoaderContainer>
         )
@@ -195,7 +193,6 @@ class Home extends Component {
     <ThemeContext.Consumer>
       {value => {
         const {isDarkTheme} = value
-        const theme = isDarkTheme ? 'dark' : 'light'
 
         const imageUrl = isDarkTheme
           ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
@@ -204,12 +201,11 @@ class Home extends Component {
         return (
           <FailureContainer>
             <FailureImage src={imageUrl} alt="failure view" />
-            <FailureHeading theme={theme}>
+            <FailureHeading isDarkTheme={isDarkTheme}>
               Oops! Something Went Wrong
             </FailureHeading>
-            <FailureParagraph theme={theme}>
-              We are having some trouble to complete your request. Please try
-              again
+            <FailureParagraph isDarkTheme={isDarkTheme}>
+              We are having some trouble
             </FailureParagraph>
             <FailureRetryBtn type="button" onClick={this.onClickRetry}>
               Retry
@@ -257,27 +253,27 @@ class Home extends Component {
         {value => {
           const {isDarkTheme} = value
 
-          const theme = isDarkTheme ? 'dark' : 'light'
           return (
             <>
               <NavBar />
               <Container>
                 <SideBarContainer />
-                <HomeDetails data-testid="home" theme={theme}>
+                <HomeDetails data-testid="home" isDarkTheme={isDarkTheme}>
                   {isCloseClicked ? null : this.renderBannerSection()}
-                  <HomeSearchAndDetailsContainer>
+                  <HomeSearchAndDetailsContainer isDarkTheme={isDarkTheme}>
                     <SearchContainer>
                       <SearchInput
                         type="search"
                         placeholder="Search"
                         value={searchInput}
                         onChange={this.onChangeSearchInput}
-                        theme={theme}
+                        isDarkTheme={isDarkTheme}
                       />
                       <SearchBtn
                         type="button"
                         onClick={this.onClickSearch}
-                        theme={theme}
+                        isDarkTheme={isDarkTheme}
+                        data-testid="searchButton"
                       >
                         <AiOutlineSearch size={20} />
                       </SearchBtn>

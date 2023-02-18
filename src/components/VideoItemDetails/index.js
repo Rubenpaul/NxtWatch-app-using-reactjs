@@ -99,7 +99,7 @@ class VideoItemDetails extends Component {
 
     if (response.ok === true) {
       this.onSubmitSuccess(updatedData)
-    } else {
+    } else if (response.ok === false) {
       this.onSubmitFailure()
     }
   }
@@ -125,13 +125,12 @@ class VideoItemDetails extends Component {
         const {isDarkTheme} = value
 
         return (
-          <LoaderContainer>
+          <LoaderContainer data-testid="loader">
             <Loader
               type="ThreeDots"
               color={isDarkTheme ? '#ffffff' : '#000000'}
               height="50"
               width="50"
-              data-testid="loader"
             />
           </LoaderContainer>
         )
@@ -157,7 +156,7 @@ class VideoItemDetails extends Component {
             </FailureHeading>
             <FailureParagraph theme={theme}>
               We are having some trouble to complete your request. Please try
-              again
+              again.
             </FailureParagraph>
             <FailureRetryBtn type="button" onClick={this.onClickRetry}>
               Retry

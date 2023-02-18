@@ -35,7 +35,7 @@ export const GamingThumbNail = styled.img`
   }
 `
 
-export const GamingHeading = styled.h1`
+export const GamingHeading = styled.p`
   font-size: 17px;
   color: ${props => (props.theme === 'dark' ? '#ffffff' : '#424242')};
 `
