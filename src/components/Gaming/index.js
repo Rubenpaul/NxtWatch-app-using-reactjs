@@ -56,16 +56,15 @@ class Gaming extends Component {
     }
 
     const response = await fetch(apiUrl, options)
-    const fetchedData = await response.json()
-
-    const updatedData = {
-      total: fetchedData.total,
-      videos: this.getUpdatedVideosList(fetchedData.videos),
-    }
-
     if (response.ok === true) {
+      const fetchedData = await response.json()
+
+      const updatedData = {
+        total: fetchedData.total,
+        videos: this.getUpdatedVideosList(fetchedData.videos),
+      }
       this.onSubmitSuccess(updatedData)
-    } else if (response.ok === false) {
+    } else {
       this.onSubmitFailure()
     }
   }

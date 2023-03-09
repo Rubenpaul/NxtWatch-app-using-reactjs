@@ -80,26 +80,25 @@ class VideoItemDetails extends Component {
     }
 
     const response = await fetch(apiUrl, options)
-    const fetchedData = await response.json()
-
-    const updatedData = {
-      id: fetchedData.video_details.id,
-      description: fetchedData.video_details.description,
-      title: fetchedData.video_details.title,
-      publishedAt: fetchedData.video_details.published_at,
-      thumbnailUrl: fetchedData.video_details.thumbnail_url,
-      videoUrl: fetchedData.video_details.video_url,
-      viewCount: fetchedData.video_details.view_count,
-      channel: {
-        name: fetchedData.video_details.channel.name,
-        profileImageUrl: fetchedData.video_details.channel.profile_image_url,
-        subscriberCount: fetchedData.video_details.channel.subscriber_count,
-      },
-    }
-
     if (response.ok === true) {
+      const fetchedData = await response.json()
+
+      const updatedData = {
+        id: fetchedData.video_details.id,
+        description: fetchedData.video_details.description,
+        title: fetchedData.video_details.title,
+        publishedAt: fetchedData.video_details.published_at,
+        thumbnailUrl: fetchedData.video_details.thumbnail_url,
+        videoUrl: fetchedData.video_details.video_url,
+        viewCount: fetchedData.video_details.view_count,
+        channel: {
+          name: fetchedData.video_details.channel.name,
+          profileImageUrl: fetchedData.video_details.channel.profile_image_url,
+          subscriberCount: fetchedData.video_details.channel.subscriber_count,
+        },
+      }
       this.onSubmitSuccess(updatedData)
-    } else if (response.ok === false) {
+    } else {
       this.onSubmitFailure()
     }
   }
