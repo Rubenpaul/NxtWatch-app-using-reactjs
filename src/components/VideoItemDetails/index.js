@@ -87,7 +87,9 @@ class VideoItemDetails extends Component {
         id: fetchedData.video_details.id,
         description: fetchedData.video_details.description,
         title: fetchedData.video_details.title,
-        publishedAt: fetchedData.video_details.published_at,
+        publishedAt: this.getUpdatedDate(
+          fetchedData.video_details.published_at,
+        ),
         thumbnailUrl: fetchedData.video_details.thumbnail_url,
         videoUrl: fetchedData.video_details.video_url,
         viewCount: fetchedData.video_details.view_count,
@@ -101,6 +103,17 @@ class VideoItemDetails extends Component {
     } else {
       this.onSubmitFailure()
     }
+  }
+
+  getUpdatedDate = date => {
+    let postedAt = formatDistanceToNow(new Date(date))
+    const postedAtList = postedAt.split(' ')
+
+    if (postedAtList.length === 3) {
+      postedAtList.shift()
+      postedAt = postedAtList.join(' ')
+    }
+    return postedAt
   }
 
   onSubmitSuccess = updatedData => {
@@ -197,15 +210,6 @@ class VideoItemDetails extends Component {
     const dislikeIsActive = dislike ? 'active' : 'not-active'
 
     const {name, profileImageUrl, subscriberCount} = channel
-
-    let postedAt = formatDistanceToNow(new Date(publishedAt))
-    const postedAtList = postedAt.split(' ')
-
-    if (postedAtList.length === 3) {
-      postedAtList.shift()
-      postedAt = postedAtList.join(' ')
-    }
-
     return (
       <ThemeContext.Consumer>
         {value => {
@@ -229,7 +233,7 @@ class VideoItemDetails extends Component {
                       <Para>{viewCount} views</Para>
                     </ListItem1>
                     <ListItem2>
-                      <Para>{postedAt} ago</Para>
+                      <Para>{publishedAt} ago</Para>
                     </ListItem2>
                   </UnOrderList>
                   <VideoIconsContainer>

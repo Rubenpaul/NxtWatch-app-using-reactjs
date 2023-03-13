@@ -1,5 +1,6 @@
 import {RiCloseLine} from 'react-icons/ri'
 import {AiOutlineSearch} from 'react-icons/ai'
+import {formatDistanceToNow} from 'date-fns'
 
 import {Component} from 'react'
 import cookies from 'js-cookie'
@@ -115,12 +116,23 @@ class Home extends Component {
       },
       title: eachVideo.title,
       id: eachVideo.id,
-      publishedAt: eachVideo.published_at,
+      publishedAt: this.getUpdatedDate(eachVideo.published_at),
       thumbnailUrl: eachVideo.thumbnail_url,
       viewCount: eachVideo.view_count,
     }))
 
     return updatedVideosList
+  }
+
+  getUpdatedDate = date => {
+    let postedAt = formatDistanceToNow(new Date(date))
+    const postedAtList = postedAt.split(' ')
+
+    if (postedAtList.length === 3) {
+      postedAtList.shift()
+      postedAt = postedAtList.join(' ')
+    }
+    return postedAt
   }
 
   renderHomeListVideosView = () => {

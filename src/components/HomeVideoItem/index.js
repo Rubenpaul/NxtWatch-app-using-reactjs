@@ -1,6 +1,5 @@
 import './index.css'
 import {Link} from 'react-router-dom'
-import {formatDistanceToNow} from 'date-fns'
 
 import {
   HomeVideoListItem,
@@ -12,9 +11,9 @@ import {
   VideoDescription,
   VideoContainer,
   VideoChannelName,
-  UnOrderList,
-  ListItem1,
-  ListItem2,
+  DetailsDiv,
+  Para1,
+  Para2,
 } from './styledComponents'
 
 import ThemeContext from '../../context/ThemeContext'
@@ -34,16 +33,8 @@ const HomeVideoItem = props => (
         title,
         viewCount,
       } = eachVideo
+
       const {name, profileImageUrl} = channel
-
-      let postedAt = formatDistanceToNow(new Date(publishedAt))
-      const postedAtList = postedAt.split(' ')
-
-      if (postedAtList.length === 3) {
-        postedAtList.shift()
-        postedAt = postedAtList.join(' ')
-      }
-
       return (
         <Link to={`/videos/${id}`} className="link">
           <HomeVideoListItem>
@@ -56,10 +47,10 @@ const HomeVideoItem = props => (
                 <VideoDescription theme={theme}>{title}</VideoDescription>
                 <VideoContainer>
                   <VideoChannelName>{name}</VideoChannelName>
-                  <UnOrderList>
-                    <ListItem1>{viewCount}</ListItem1>
-                    <ListItem2>{postedAt} ago</ListItem2>
-                  </UnOrderList>
+                  <DetailsDiv>
+                    <Para1>{viewCount}</Para1>
+                    <Para2>{publishedAt} ago</Para2>
+                  </DetailsDiv>
                 </VideoContainer>
               </VideoDetails>
             </ItemDetailsContainer>

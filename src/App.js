@@ -123,7 +123,8 @@ class App extends Component {
                 component={VideoItemDetails}
               />
 
-              <Route path="/not-found" component={NotFound} />
+              <Route exact path="/not-found" component={NotFound} />
+              <Redirect to="/not-found" />
             </Switch>
           </ActiveMenuContext.Provider>
         </SavedVideosContext.Provider>

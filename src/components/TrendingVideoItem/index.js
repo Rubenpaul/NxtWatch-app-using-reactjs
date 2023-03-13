@@ -1,5 +1,3 @@
-import {formatDistanceToNow} from 'date-fns'
-
 import {
   TrendingVideoListItem,
   TrendingItemThumbNail,
@@ -35,15 +33,6 @@ const TrendingVideoItem = props => (
       } = eachVideo
       const {name, profileImageUrl} = channel
 
-      let postedAt = formatDistanceToNow(new Date(publishedAt))
-
-      const postedAtList = postedAt.split(' ')
-
-      if (postedAtList.length === 3) {
-        postedAtList.shift()
-        postedAt = postedAtList.join(' ')
-      }
-
       return (
         <AnchorLink to={`/videos/${id}`}>
           <TrendingVideoListItem>
@@ -65,7 +54,7 @@ const TrendingVideoItem = props => (
                       <Para isDarkTheme={isDarkTheme}>{viewCount}</Para>
                     </ListItem1>
                     <ListItem2>
-                      <Para isDarkTheme={isDarkTheme}>{postedAt} ago</Para>
+                      <Para isDarkTheme={isDarkTheme}>{publishedAt} ago</Para>
                     </ListItem2>
                   </UnOrderList>
                 </VideoContainer>
