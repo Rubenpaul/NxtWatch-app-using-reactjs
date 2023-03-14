@@ -60,7 +60,7 @@ class Gaming extends Component {
       const fetchedData = await response.json()
 
       const updatedData = {
-        total: fetchedData.total,
+        total: fetchedData.videos.length,
         videos: this.getUpdatedVideosList(fetchedData.videos),
       }
       this.onSubmitSuccess(updatedData)

@@ -71,7 +71,7 @@ class Home extends Component {
       const fetchedData = await response.json()
 
       const updatedData = {
-        total: fetchedData.total,
+        total: fetchedData.videos.length,
         videos: this.getUpdatedVideosList(fetchedData.videos),
       }
       this.onSubmitSuccess(updatedData)
@@ -178,7 +178,7 @@ class Home extends Component {
 
     return (
       <>
-        {total === 0 ? this.renderNoViews() : this.renderHomeListVideosView()}
+        {total !== 0 ? this.renderHomeListVideosView() : this.renderNoViews()}
       </>
     )
   }
