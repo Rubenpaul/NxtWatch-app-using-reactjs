@@ -54,7 +54,7 @@ const TrendingVideoItem = props => (
                       <Para isDarkTheme={isDarkTheme}>{viewCount}</Para>
                     </ListItem1>
                     <ListItem2>
-                      <Para isDarkTheme={isDarkTheme}>{publishedAt} ago</Para>
+                      <Para isDarkTheme={isDarkTheme}>{publishedAt}</Para>
                     </ListItem2>
                   </UnOrderList>
                 </VideoContainer>

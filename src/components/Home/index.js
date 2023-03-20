@@ -80,6 +80,14 @@ class Home extends Component {
     }
   }
 
+  publishedYearsAgo = dateString => {
+    const publishedTimestamp = Date.parse(dateString)
+    const currentTimestamp = Date.now()
+    const differenceInMs = currentTimestamp - publishedTimestamp
+    const yearsAgo = Math.floor(differenceInMs / (1000 * 60 * 60 * 24 * 365))
+    return `${yearsAgo} years ago`
+  }
+
   onChangeSearchInput = event => {
     this.setState({searchInput: event.target.value})
   }
@@ -116,7 +124,7 @@ class Home extends Component {
       },
       title: eachVideo.title,
       id: eachVideo.id,
-      publishedAt: this.getUpdatedDate(eachVideo.published_at),
+      publishedAt: this.publishedYearsAgo(eachVideo.published_at),
       thumbnailUrl: eachVideo.thumbnail_url,
       viewCount: eachVideo.view_count,
     }))
@@ -124,16 +132,16 @@ class Home extends Component {
     return updatedVideosList
   }
 
-  getUpdatedDate = date => {
-    let postedAt = formatDistanceToNow(new Date(date))
-    const postedAtList = postedAt.split(' ')
+  //   getUpdatedDate = date => {
+  //     let postedAt = formatDistanceToNow(new Date(date))
+  //     const postedAtList = postedAt.split(' ')
 
-    if (postedAtList.length === 3) {
-      postedAtList.shift()
-      postedAt = postedAtList.join(' ')
-    }
-    return postedAt
-  }
+  //     if (postedAtList.length === 3) {
+  //       postedAtList.shift()
+  //       postedAt = postedAtList.join(' ')
+  //     }
+  //     return postedAt
+  //   }
 
   renderHomeListVideosView = () => {
     const {homeVideosObj} = this.state

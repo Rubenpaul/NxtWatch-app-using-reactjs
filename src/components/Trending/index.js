@@ -89,7 +89,7 @@ class Trending extends Component {
       },
       title: eachVideo.title,
       id: eachVideo.id,
-      publishedAt: this.getUpdatedDate(eachVideo.published_at),
+      publishedAt: this.publishedYearsAgo(eachVideo.published_at),
       thumbnailUrl: eachVideo.thumbnail_url,
       viewCount: eachVideo.view_count,
     }))
@@ -97,16 +97,24 @@ class Trending extends Component {
     return updatedVideosList
   }
 
-  getUpdatedDate = date => {
-    let postedAt = formatDistanceToNow(new Date(date))
-    const postedAtList = postedAt.split(' ')
-
-    if (postedAtList.length === 3) {
-      postedAtList.shift()
-      postedAt = postedAtList.join(' ')
-    }
-    return postedAt
+  publishedYearsAgo = dateString => {
+    const publishedTimestamp = Date.parse(dateString)
+    const currentTimestamp = Date.now()
+    const differenceInMs = currentTimestamp - publishedTimestamp
+    const yearsAgo = Math.floor(differenceInMs / (1000 * 60 * 60 * 24 * 365))
+    return `${yearsAgo} years ago`
   }
+
+  //   getUpdatedDate = date => {
+  //     let postedAt = formatDistanceToNow(new Date(date))
+  //     const postedAtList = postedAt.split(' ')
+
+  //     if (postedAtList.length === 3) {
+  //       postedAtList.shift()
+  //       postedAt = postedAtList.join(' ')
+  //     }
+  //     return postedAt
+  //   }
 
   onClickRetry = () => {
     this.getTrendingVideos()

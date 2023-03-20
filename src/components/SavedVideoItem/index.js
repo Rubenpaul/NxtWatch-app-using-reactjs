@@ -46,7 +46,7 @@ const SavedVideoItem = props => (
                   <VideoChannelName theme={theme}>{name}</VideoChannelName>
                   <UnOrderList>
                     <Para theme={theme}>{viewCount}</Para>
-                    <Para theme={theme}>{publishedAt} ago</Para>
+                    <Para theme={theme}>{publishedAt}</Para>
                   </UnOrderList>
                 </VideoContainer>
               </VideoDetails>

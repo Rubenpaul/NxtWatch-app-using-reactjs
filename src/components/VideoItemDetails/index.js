@@ -87,7 +87,7 @@ class VideoItemDetails extends Component {
         id: fetchedData.video_details.id,
         description: fetchedData.video_details.description,
         title: fetchedData.video_details.title,
-        publishedAt: this.getUpdatedDate(
+        publishedAt: this.publishedYearsAgo(
           fetchedData.video_details.published_at,
         ),
         thumbnailUrl: fetchedData.video_details.thumbnail_url,
@@ -105,16 +105,24 @@ class VideoItemDetails extends Component {
     }
   }
 
-  getUpdatedDate = date => {
-    let postedAt = formatDistanceToNow(new Date(date))
-    const postedAtList = postedAt.split(' ')
-
-    if (postedAtList.length === 3) {
-      postedAtList.shift()
-      postedAt = postedAtList.join(' ')
-    }
-    return postedAt
+  publishedYearsAgo = dateString => {
+    const publishedTimestamp = Date.parse(dateString)
+    const currentTimestamp = Date.now()
+    const differenceInMs = currentTimestamp - publishedTimestamp
+    const yearsAgo = Math.floor(differenceInMs / (1000 * 60 * 60 * 24 * 365))
+    return `${yearsAgo} years ago`
   }
+
+  //   getUpdatedDate = date => {
+  //     let postedAt = formatDistanceToNow(new Date(date))
+  //     const postedAtList = postedAt.split(' ')
+
+  //     if (postedAtList.length === 3) {
+  //       postedAtList.shift()
+  //       postedAt = postedAtList.join(' ')
+  //     }
+  //     return postedAt
+  //   }
 
   onSubmitSuccess = updatedData => {
     this.setState({
@@ -233,7 +241,7 @@ class VideoItemDetails extends Component {
                       <Para>{viewCount} views</Para>
                     </ListItem1>
                     <ListItem2>
-                      <Para>{publishedAt} ago</Para>
+                      <Para>{publishedAt}</Para>
                     </ListItem2>
                   </UnOrderList>
                   <VideoIconsContainer>
